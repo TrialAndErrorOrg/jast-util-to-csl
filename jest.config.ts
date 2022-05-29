@@ -1,3 +1,4 @@
+/* eslint-disable */
 const config = {
   displayName: 'rejour-jast-util-to-texast',
   preset: '../../../jest.preset.js',

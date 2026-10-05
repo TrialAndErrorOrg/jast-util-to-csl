@@ -1,11 +1,16 @@
 {
   "name": "jast-util-to-csl",
-  "version": "0.1.2",
+  "version": "0.2.0",
+  "description": "Convert JATS XML bibliography to CSL JSON",
   "license": "GPL-3.0-or-later",
-  "repository": "https://github.com/TrialAndErrorOrg/parsers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrialAndErrorOrg/parsers.git",
+    "directory": "libs/jast/jast-util-to-csl"
+  },
+  "homepage": "https://github.com/TrialAndErrorOrg/parsers/tree/main/libs/jast/jast-util-to-csl#readme",
   "author": "Thomas F. K. Jorna <hello@tefkah.com>",
   "type": "module",
-  "description": "Convert a `jast` citation syntax tree to list of `csl` objects.",
   "keywords": [
     "jast",
     "jats-xml",
@@ -14,24 +19,39 @@
     "ast",
     "unified"
   ],
+  "exports": {
+    ".": {
+      "@jote/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
   "typedoc": {
     "entryPoint": "./src/index.ts",
     "readmeFile": "./README.md",
     "displayName": "jast-util-to-csl",
     "tsconfig": "./tsconfig.lib.json"
   },
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js"
-    }
+  "dependencies": {
+    "csl-json": "0.1.0",
+    "jast-types": "workspace:^",
+    "xast-util-is-element": "workspace:^",
+    "xast-util-select": "workspace:^",
+    "xast-util-to-string": "catalog:"
   },
-  "main": "./index.js",
-  "module": "./index.js",
-  "types": "./index.d.ts",
-  "files": [
-    "index.d.ts",
-    "index.js",
-    "/lib"
-  ]
+  "devDependencies": {
+    "rejour-parse": "workspace:^",
+    "to-vfile": "catalog:",
+    "unified": "catalog:"
+  }
 }
